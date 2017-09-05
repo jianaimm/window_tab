@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" href="css/index.css" />
+</head>
+<body>
+<!--桌面背景-->
+<div class="backImage">
+	<div></div>
+</div>
+<!--新建文件夹和垃圾桶-->
+<ul id="files">
+	<!--<li class="file" id="trash"></li>-->
+</ul>
+<!--桌面右键菜单-->
+<ul class="context"></ul>
+<!--文件夹右键菜单-->
+<!--<ul id="fileMenu"></ul>-->
+<!--双击打开文件夹详情-->
+<div id="fileDetail">
+	<div></div>
+	<a href="javascript:;" id="detailClose">X</a>
+</div>
+<!--路径导航-->
+<div id="paths">
+	<a href="javascript:;"id="back">返回上一级</a>
+	<span>| |</span>
+	<ul id="crumbs"></ul>
+</div>
+<!--上传文件按钮-->
+<input type="file" id="upload" name="" style="display: none;" />
+<!--遮罩层-->
+<div class="mask">
+	<div class="warning">
+		<p>重名了，请重新输入哦~</p>
+		<span class="close"></span>
+	</div>
+</div>
+<!--下拉换肤-->
+<div class="rope"></div>
+<a href="javascript:;" class="buckle"></a>
+<!--圆形表盘时钟-->
+<!--<div class="clock">
+	<div class="scale">
+		<!--<span></span>-->
+	<!--</div><!--刻度-->
+	<!--<div class="hour"></div><!--时针-->
+	<!--<div class="minute"></div>分针-->
+	<!--<div class="second"></div>秒针-->
+	<!--<div class="icon"></div>表盘中心点-->
+<!--</div>-->
+</body>
+<!--封装的动画函数-->
+<script src="js/m.touch.js"></script>
+<!--封装的拼音排序法-->
+<script src="js/pinyin.js"></script>
+<!--存放数据-->
+<script src="js/data.js"></script>
+<!--只操作数据-->
+<script src="js/model.js"></script>
+<!--处理业务逻辑，封装index.js中用到的功能-->
+<script src="js/function.js"></script>
+<script src="js/index.js"></script>
+</html>

@@ -1,0 +1,397 @@
+@charset "utf-8";
+html,
+body {
+	height: 100%;
+}
+body {
+	user-select: none;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+}
+body,
+p {
+	margin: 0;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+img {
+	vertical-align: top;
+}
+a {
+	text-decoration: none;
+}
+/*桌面背景*/
+.backImage {
+	position: relative;
+	width: 100%;
+	height: 100%;
+}
+.backImage div {
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: url('../img/1.jpg')  no-repeat center center;
+	background-size: cover;
+}
+/*右键菜单;*/
+.context {
+	z-index: 10;
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 200px;
+	padding: 6px 3px;
+	font: 16px/36px "微软雅黑";
+	color: #000;
+	background: #f0f0f0;
+	border: 1px solid #979797;
+	box-shadow: 2px 2px 3px rgba(0,0,0,.3);
+}
+.context li {
+	position: relative;
+	padding: 0 10px;
+	margin: 3px 0;
+	border: 1px solid transparent;
+}
+.context ul {
+	display: none;
+	position: absolute;
+	left: 190px;
+	top: 0;
+	width: 200px;
+	padding: 6px;
+	font: 16px/36px "微软雅黑";
+	color: #000;
+	background: #f0f0f0;
+	border: 1px solid #979797;
+}
+.context li.active {
+	background: #d1e2f2;
+	border: 1px solid #78aee5;
+}
+/*右键菜单 禁用项 和 下划线*/
+.context li.disabled {
+	color: #8B8B8B;
+}
+.context li.splitLine {
+	border: 1px solid #ccc;
+	height: 0;
+	padding: 0;
+	margin: 1px 0;
+}
+/*右键上传文件;*/
+.context label {
+	display: block;
+}
+#fileBtn {
+	display: none;
+}
+/*双击打开文件夹*/
+#fileDetail {
+	z-index: 99;
+	display: none;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.4);
+}
+#fileDetail p {
+	margin: 5px auto;
+	width: 70%;
+	font: 30px/60px arial,"微软雅黑";
+	color: #fff;
+}
+#fileDetail img,
+#fileDetail video,
+#fileDetail audio {
+	margin: 30px auto;
+	display: block;
+}
+#detailClose {
+	position: absolute;
+	right: 20px;
+	top: 20px;
+	width: 50px;
+	height: 50px;
+	border-radius: 50%;
+	background: rgba(0,0,0,.6);
+	font: 30px/50px arial;
+	color: #fff;
+	text-align: center;
+}
+#detailClose:hover {
+	background: rgba(0,0,0,.8);
+}
+/*新建文件夹*/
+#files {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+#files li {
+	position: absolute;
+	padding: 20px 5px;
+	box-sizing: border-box;
+	width: 140px;
+	height: 140px;
+	text-align: center;
+	border-radius: 5px;
+	border: 1px solid transparent;
+	cursor: pointer;
+	z-index: 9;
+}
+#files .img {
+	margin: 0 auto;
+	width: 75px;
+	height: 75px;
+	background: no-repeat center;
+	background-size: contain;
+}
+#files p {
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font: 16px/40px Arial,"微软雅黑";
+	color: #292828;
+	text-shadow: 1px 1px 2px rgba(255,255,255,.5);
+}
+#files input {
+	display: none;
+	box-sizing: border-box;
+	width: 100%;
+	height: 40px;
+	font: 16px/40px Arial,"微软雅黑";
+	border: none;
+	text-align: center;
+}
+#files li.hover {
+	background: rgba(255,255,255,.2);
+	border: 1px solid rgba(255,255,255,.5);
+}
+#files li.active {
+	background: rgba(255,255,255,.4);
+	border: 1px solid rgba(255,255,255,.8);
+}
+#files li.active.hover {
+	background: rgba(255,255,0,.4);
+	border: 1px solid rgba(255,255,255,.8);
+}
+/*垃圾桶*/
+/*#files li.trash {
+	background: url('../img/g11.png') no-repeat center bottom;
+	background-size: contain;
+}*/
+#files li.trashHover {
+	border-color: transparent;
+	background-image: url('../img/trashIN.png') no-repeat center;
+}
+/*文件夹的右键菜单;*/
+#fileMenu {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 200px;
+	padding: 6px 3px;
+	font: 14px/24px "微软雅黑";
+	color: #000;
+	background: #f0f0f0;
+	border: 1px solid #979797;
+}
+#fileMenu li {
+	cursor: pointer;
+	padding: 0 10px;
+	margin: 3px 0;
+	border: 1px solid transparent;
+}
+#fileMenu .active {
+	background: #d1e2f2;
+	border: 1px solid #78aee5;
+}
+/*面包屑路径导航*/
+#paths {
+	z-index: 98;
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 60px;
+	transform: translateY(-60px);
+	transition: .5s;
+	font: bold 18px/60px arial,"微软雅黑";
+	color: #484646;
+	background: rgba(255,255,255,.3);
+	box-shadow: 0 3px 2px rgba(0,0,0,.3);
+}
+#paths a {
+	float: left;
+	color: #ff5722;
+	margin: 0 8px;
+}
+#paths #back{
+	margin: 0 8px 0 15%;
+}
+#paths span {
+	float: left;
+	margin-right: 20px;
+}
+#crumbs {
+	float: left;
+}
+#crumbs li {
+	vertical-align: top;
+	display: inline-block;
+	margin: 0 3px;
+}
+
+/*遮罩层;*/
+.mask {
+	display: none;
+	position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 50;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.4);
+}
+.warning {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	width: 360px;
+	height: 230px;
+	/*transform: translateX(-50%) translateY(-50%);*/
+	margin: -145px 0 0 -180px;
+	background: url(../img/beach.jpg);
+	box-shadow: 3px 5px 10px rgba(3,94,207,.2);
+	border-radius: 5px;
+	color: #000;
+	opacity: 0;
+}
+.warning .close {
+	position: absolute;
+	right: 20px;
+	top: 10px;
+	width: 28px;
+	height: 28px;
+	cursor: pointer;
+	background: url(../img/del.png);
+	border-radius: 50%;
+	transform: rotate(0deg);
+	transition: .3s;
+}
+.warning .close:hover {
+	transform: rotate(180deg);
+}
+.warning p {
+	font: bold 18px/60px "微软雅黑";
+	text-align: center;
+	margin: 90px auto;
+}
+/*选框*/
+.selector {
+	position: fixed;
+	box-sizing: border-box;
+	background: rgba(0, 0, 255, .1);
+	border: 1px solid rgba(0, 0, 255, .4);
+}
+/*下拉更换桌面背景*/
+.rope {
+	z-index: 40;
+	position: fixed;
+	top: -800px;
+	right: 10%;
+	width: 4px;
+	height: 908px;
+	background: url(../img/rope.png);
+	/*background: linear-gradient(blue,yellow);*/
+}
+.buckle {
+	z-index: 40;
+	position: fixed;
+	top: 90px;
+	right: 10%;
+	transform: translateX(23px);
+	width: 46px;
+	height: 46px;
+	background: url(../img/skin.png) no-repeat;
+	background-size: contain;
+}
+/*圆形表盘时钟*/
+.clock {
+	position: fixed;
+	right: 100px;
+	bottom: 300px;
+	width: 200px;
+	height: 200px;
+	border: 2px solid #000;
+	border-radius: 50%;
+}
+.scale {
+	position: relative;
+	width: 200px;
+	height: 200px;
+}
+.scale span {
+	position: absolute;
+	left: 99px;
+	top: 0;
+	width: 2px;
+	height: 8px;
+	background: #ccc;
+	transform-origin: center 100px;
+}
+.scale span:nth-of-type(5n+1) {
+	height: 14px;
+	background: #000;
+}
+.hour {
+	position: absolute;
+	left: 97px;
+	top: 40px;
+	width: 6px;
+	height: 60px;
+	background: #000;
+	transform-origin: bottom;
+}
+.minute {
+	position: absolute;
+	left: 98px;
+	top: 20px;
+	width: 4px;
+	height: 80px;
+	background: green;
+	transform-origin: bottom;
+}
+.second {
+	position: absolute;
+	left: 99px;
+	top: 5px;
+	width: 2px;
+	height: 95px;
+	background: red;
+	transform-origin: bottom;
+}
+.icon {
+	position: absolute;
+	left: 95px;
+	top: 95px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	background: #170300;
+}
+/*日历*/
+
+
