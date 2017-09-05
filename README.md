@@ -6,15 +6,15 @@
 # 克隆到本地
 
 ```
-git clone https://github.com/jianaimm/windows_tab.git
+git clone https://github.com/jianaimm/window_tab.git
 ```
 
 # 进入文件夹
 ```
-cd windows_tab
+cd window_tab
 ```
 
-# 直接打开index.html
+# 直接打开桌面.html
 
 
 # 技术栈
